@@ -7,3 +7,7 @@ dist
 #
 #*.tgz
 #*.log
+*.pma
+.vscode/*
+package-lock.json
+package-lock.json

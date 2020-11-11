@@ -292,7 +292,7 @@
         "icon": "fab fa-telegram-plane",
         "description": "Telegram is a messaging app with a focus on speed and security, it’s super-fast, simple and free.",
         "url": "https://web.telegram.org/",
-        "multiple": false,
+        "multiple": true,
         "injectCode": "./js/ttth/services/telegram/telegram_inject.js",
         "userAgentDefault": ""
     },
@@ -336,7 +336,7 @@
         "icon": "fab fa-whatsapp",
         "description": "With WhatsApp, you'll get fast, simple, secure messaging and calling for free*, available on phones all over the world.",
         "url": "https://web.whatsapp.com/",
-        "multiple": false,
+        "multiple": true,
         "injectCode": "./js/ttth/services/whatsapp/whatsapp_inject.js",
         "userAgentDefault": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
     },

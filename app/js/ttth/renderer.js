@@ -1572,6 +1572,8 @@ function removeServiceTab (tabId) {
 * @param {string} serviceUserAgentDefault
 * @param {string} serviceUserAgentCustom
 */
+
+
 function addServiceTab (serviceId, serviceType, serviceName, serviceIcon, serviceUrl, serviceInjectCode, serviceUserAgentDefault, serviceUserAgentCustom) {
     utils.writeConsoleMsg('info', 'addServiceTab ::: Starting to add the tab: _' + serviceId + '_.')
 
@@ -1627,16 +1629,23 @@ function addServiceTab (serviceId, serviceType, serviceName, serviceIcon, servic
 
     // add webview  to new tab
     //
+    var sessionPersistName = serviceDomain + '_' + serviceName;
+
     if (serviceType === 'whatsapp') {
         // Whatsapp needs: - no partition
         $('#' + serviceId).append('<webview id=webview_' + serviceId + " class='ttth_resizer' src=" + serviceUrl + ' preload=' + serviceInjectCode + " userAgent='" + userAgent + "'></webview>")
-    } else {
+    } 
+    else if(serviceType === 'telegram'){
+            // got injectCode, preload it
+            $('#' + serviceId).append('<webview id=webview_' + serviceId + ' partition=persist:' + sessionPersistName + " class='ttth_resizer' src=" + serviceUrl + ' preload=' + serviceInjectCode + ' userAgent="' + userAgent + '"></webview>')
+    }
+    else {
         if (serviceInjectCode === '') {
             // no inject code
-            $('#' + serviceId).append('<webview id=webview_' + serviceId + ' partition=persist:' + serviceDomain + " class='ttth_resizer' src=" + serviceUrl + ' userAgent="' + userAgent + '"></webview>')
+            $('#' + serviceId).append('<webview id=webview_' + serviceId + ' partition=persist:' + sessionPersistName + " class='ttth_resizer' src=" + serviceUrl + ' userAgent="' + userAgent + '"></webview>')
         } else {
             // got injectCode, preload it
-            $('#' + serviceId).append('<webview id=webview_' + serviceId + ' partition=persist:' + serviceDomain + " class='ttth_resizer' src=" + serviceUrl + ' preload=' + serviceInjectCode + ' userAgent="' + userAgent + '"></webview>')
+            $('#' + serviceId).append('<webview id=webview_' + serviceId + ' partition=persist:' + sessionPersistName + " class='ttth_resizer' src=" + serviceUrl + ' preload=' + serviceInjectCode + ' userAgent="' + userAgent + '"></webview>')
         }
     }
 
